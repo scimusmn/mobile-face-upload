@@ -50,7 +50,8 @@ io.on('connection', function(socket) {
 
       // Let Screen know it is available
       console.log('success, file saved: ' + fileURL);
-      socket.broadcast.emit('display-user-photo', fileURL);
+      var localFileUrl = '../' + fileURL;
+      socket.broadcast.emit('display-user-photo', localFileUrl);
 
     });
 
