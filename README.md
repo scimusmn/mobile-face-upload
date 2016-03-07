@@ -1,11 +1,11 @@
-# smm-smart-face-upload
+# mobile-face-upload
 Use a smartphone to upload your face as an avatar.
 Potential for quickly creating a fun, personal connection to a group experience.
 
-#Status
+##Status
 In-progress experiment. Instructions and example coming soon.
 
-References:
+##References:
 
 * [Mozilla Camera API](https://developer.mozilla.org/en-US/docs/Web/Guide/API/Camera)
 * [Camera API Example](http://robnyman.github.io/camera-api/)
