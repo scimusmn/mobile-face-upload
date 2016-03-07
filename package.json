@@ -1,0 +1,25 @@
+{
+  "name": "smm-smart-face-upload",
+  "version": "1.0.0",
+  "description": "Use a smartphone to upload your own face as an avatar. Potential for quickly creating a fun, personal connection to a group experience.",
+  "main": "node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scimusmn/smm-smart-face-upload.git"
+  },
+  "author": "tnordberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scimusmn/smm-smart-face-upload/issues"
+  },
+  "homepage": "https://github.com/scimusmn/smm-smart-face-upload",
+  "dependencies": {
+    "express": "^4.9.8",
+    "puid": "^1.0.5",
+    "socket.io": "^1.1.0",
+    "ua-parser": "^0.3.3"
+  }
+}
