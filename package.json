@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/scimusmn/smm-smart-face-upload",
   "dependencies": {
+    "bootstrap": "^3.3.6",
     "express": "^4.9.8",
     "puid": "^1.0.5",
     "socket.io": "^1.1.0",
