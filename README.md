@@ -3,7 +3,7 @@ Use a smartphone to upload your face as an avatar.
 Potential for quickly creating a fun, personal connection to a group experience.
 
 ##Status
-In-progress experiment. Instructions and example coming soon.
+In-progress. Instructions and example coming soon.
 
 ##References:
 
