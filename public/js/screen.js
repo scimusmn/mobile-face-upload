@@ -12,10 +12,4 @@ $(document).ready(function() {
 
   });
 
-  // TODO:
-  // URL.revokeObjectURL(imgURL);
-  // Depending on the the format of the image
-  // srcs' we should be ensuring they get release
-  // from memory once loaded appropiately.
-
 });

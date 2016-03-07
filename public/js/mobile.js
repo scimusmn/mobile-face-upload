@@ -189,6 +189,7 @@ $(document).ready(function() {
     var color;
     var edgeColors = [];
     for (var i = 0; i < samplePoints.length; i++) {
+
       // Get pixel data at x,y point on canvas
       pixel = context.getImageData(Math.round(samplePoints[i].x), Math.round(samplePoints[i].y), 1, 1).data;
 
