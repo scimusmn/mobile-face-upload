@@ -13,6 +13,7 @@
         <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
         <script src="../js/vendor/jquery.facedetection/jquery.facedetection.min.js"></script>
         <script src="../js/vendor/blueimp-load-image/load-image.all.min.js"></script>
+        <script src="../js/faceInput.js"></script>
         <script src="../js/mobile.js"></script>
 
     </head>
@@ -21,17 +22,36 @@
 
         <div class="container">
 
-            <h1>Face Upload</h1>
-            <h2>Take three selfies to get in the action.</h2>
-
             <section id='main-section'>
 
-                <div class="btn-block">
-                    <img id='faceBtn_normal' src='img/uploadFace_1.png'>
-                    <input id='faceInput_normal' type='file' accept='image/*' capture='camera' style='display:none;'>
-                </div>
+                <h1>Face Upload</h1>
+                <h2>Take three selfies with different expressions.</h2>
+                <br/>
+
+                <a href="#" id='faceBtn_focused' class="btn-block btn btn-default">
+                    <img src='img/expression_focused.png'>
+                    <p>Focused</p>
+                </a>
+
+                <a href="#" id='faceBtn_happy' class="btn-block btn btn-default">
+                    <img src='img/expression_happy.png'>
+                    <p>Happy</p>
+                </a>
+
+                <a href="#" id='faceBtn_ouch' class="btn-block btn btn-default">
+                    <img src='img/expression_ouch.png'>
+                    <p>Ouch</p>
+                </a>
+
+                <br/>
+                <p><em>Tip:</em> Center your face in the camera view so it almost fills the screen. Make your expressions BIG for dramatic effect!</p>
+                <br/>
+                <a id="btnDone" href="#" class="btn-block btn btn-lg btn-primary">
+                    Done
+                </a>
 
             </section>
+            <br/>
 
         </div>
 

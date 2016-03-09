@@ -38,31 +38,62 @@ app.get('/screen', function(request, response) {
 // Socket.io connections
 io.on('connection', function(socket) {
 
-  socket.on('submit-user-photo', function(data) {
+  socket.on('submit-user-faces', function(data) {
 
-    // Simple find/replace to ensure proper encoding
-    var base64Data = data.replace(/^data:image\/png;base64,/, '');
+    var userFaces = saveFaces(data);
 
-    // Save base64 png to disk with random identifier
-    var fileURL = FACES_DIR + 'USER_FACE_' + Math.round(Math.random() * 9999) + '.png';
-    fs.writeFile('public/' + fileURL, base64Data, 'base64', function(err) {
-      if (err) throw err;
-
-      // Let Screen know it is available
-      console.log('success, file saved: ' + fileURL);
-      var localFileUrl = '../' + fileURL;
-      socket.broadcast.emit('display-user-photo', localFileUrl);
-
-    });
+    socket.broadcast.emit('new-user-faces', userFaces);
 
   });
 
 });
 
-// Clear previous faces folder
-removeFilesOfDirectory('public/' + FACES_DIR);
+function saveFaces(data) {
 
-function removeFilesOfDirectory(dirPath) {
+  var savedFaces = {};
+
+  for (var key in data) {
+
+    var obj = data[key];
+    if (!obj || obj === '') continue;
+
+    // Find/replace to ensure proper base64 encoding
+    var base64Data = obj.replace(/^data:image\/png;base64,/, '');
+
+    var filePath = FACES_DIR + 'USER_FACE_' + key + '_' + Math.round(Math.random() * 9999) + '.png';
+    var savePath = 'public/' + filePath;
+    var localPath = '../' + filePath;
+
+    // Save base64 png to disk with random identifier
+    fs.writeFile(savePath, base64Data, 'base64', function(err) {
+
+      if (err) throw err;
+
+    });
+
+    savedFaces[key] = localPath;
+
+  }
+
+  return savedFaces;
+
+}
+
+// Listen for http requests on port <portNumber>
+http.listen(portNumber, function() {
+
+  console.log('Listening to Node server on port ' + portNumber + '...');
+
+});
+
+/*
+    Clear Directory
+
+    Removes all files. Call on startup if
+    there is no reason to keep log of files.
+
+*/
+function clearDirectory(dirPath) {
   var files;
   try {
     files = fs.readdirSync(dirPath);
@@ -82,10 +113,4 @@ function removeFilesOfDirectory(dirPath) {
   }
 }
 
-// Listen for http requests on port <portNumber>
-http.listen(portNumber, function() {
-
-  console.log('Listening to Node server on port ' + portNumber + '...');
-
-});
-
+clearDirectory('public/' + FACES_DIR);

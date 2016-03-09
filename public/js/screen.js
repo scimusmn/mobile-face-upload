@@ -2,13 +2,20 @@ $(document).ready(function() {
 
   var socket = io();
 
-  socket.on('display-user-photo', function(data) {
+  socket.on('new-user-faces', function(data) {
 
-    console.log('display-user-photo', data);
-    var el = $('<img src="' + data + '"/>');
-    $('#stage').append(el);
+    console.log('new-user-faces', data);
 
-    $(el).css('height', 75);
+    for (var key in data) {
+
+      var imgSrc = data[key];
+
+      $('#stage').append(key);
+
+      var el = $('<img src="' + imgSrc + '"/>');
+      $('#stage').append(el);
+
+    }
 
   });
 
