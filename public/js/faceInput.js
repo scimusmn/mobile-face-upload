@@ -19,6 +19,7 @@ var FaceInput = function(_id, _options) {
   // Set options and defaults
   if (typeof _options === 'undefined') _options = {};
 
+  // TODO - Wire in these options and any others that would be useful....
   this.maxWidth = _options.maxWidth || 300;
   this.maxHeight = _options.maxHeight || 300;
   this.extendColors = _options.extendColors || true;
@@ -26,13 +27,17 @@ var FaceInput = function(_id, _options) {
   this.id = _id;
   this.inputId = _id + '_faceInput';
 
+  this.triggerDiv = $('#' + _id);
+
+  this.onSuccess = function(data) {};
+
   // Add a hidden file input corresponding withe the button based in
   $('body').append('<input id="' + this.inputId + '" type="file" accept="image/*" capture="camera" style="display:none;">');
   var hiddenInput = $('#' + this.inputId);
 
   // Fake click on hidden file input when
   // surrogate button is clicked.
-  $('#' + _id).click(function() {
+  $(this.triggerDiv).click(function() {
     $(hiddenInput).click();
   });
 
@@ -276,6 +281,8 @@ var FaceInput = function(_id, _options) {
 
     // Expose img string for acquisition
     _this.base64Img = base64Img;
+
+    _this.onSuccess(cnv);
 
   }
 
